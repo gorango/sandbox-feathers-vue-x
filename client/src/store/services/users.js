@@ -32,9 +32,9 @@ export default function (feathersClient, service) {
         createdAt: null,
         updatedAt: null,
 
-        // groups: 'ConvoGroup',
-        // followers: 'Relationship',
-        // follows: 'Relationship'
+        groups: 'ConvoGroup',
+        followers: 'Relationship',
+        follows: 'Relationship'
       }
     }
   })

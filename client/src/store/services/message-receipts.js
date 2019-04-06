@@ -19,8 +19,8 @@ export default function (feathersClient, service) {
 
         createdAt: null,
 
-        // author: 'User',
-        // recipient: 'User',
+        author: 'User',
+        recipient: 'User',
         message: 'Message',
         convo: 'Convo',
         group: 'ConvoGroup',

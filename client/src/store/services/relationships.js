@@ -15,8 +15,8 @@ export default function (feathersClient, service) {
 
         createdAt: null,
 
-        // follower: 'User',
-        // followee: 'User'
+        follower: 'User',
+        followee: 'User'
       }
     }
   })

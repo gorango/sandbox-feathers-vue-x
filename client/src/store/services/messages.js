@@ -15,7 +15,7 @@ export default function (feathersClient, service) {
         body: null,
         createdAt: null,
 
-        // author: 'User',
+        author: 'User',
         convo: 'Convo'
       }
     }

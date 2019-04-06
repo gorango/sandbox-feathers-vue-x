@@ -15,7 +15,7 @@ export default function (feathersClient, service) {
         status: null,
         createdAt: null,
 
-        // user: 'User',
+        user: 'User',
         receipts: 'MessageReceipt',
       }
     }
