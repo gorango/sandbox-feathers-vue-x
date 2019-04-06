@@ -11,18 +11,13 @@ module.exports = {
     postGeneration: data => {
       // Mutate fake data after its generated.
       // We need to remove ids from all objects so that Sequelize can automatically assign appropriate ids
-      let {messageReceipts, convoGroups, users, ...rest} = data
-
-      users = users.map((user, i) => ({
-        ...user,
-        email: `demo${i}@example.com`
-      }))
+      const {users, ...rest} = data
 
       return {
-        ...rest,
-        users,
-        ['message-receipts']: messageReceipts,
-        ['convo-groups']: convoGroups
+        users: users.map((user, i) => ({
+          ...user,
+          email: `demo${i}@example.com`
+        }))
       }
     },
     // https://github.com/json-schema-faker/json-schema-faker#custom-options

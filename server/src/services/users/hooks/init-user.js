@@ -22,14 +22,15 @@ module.exports = function (options = {}) {
 
     // create some fake convos when a user signs up
     const {data: demoUsers} = await context.app.service('users').find({query: {$sort: {createdAt: 1}, $limit: 3}})
+    if (demoUsers.length) {
+      const convo1 = await context.app.service('convos').create({users: [ownerUuid, ...demoUsers.map(({uuid}) => uuid)]})
+      await context.app.service('messages').create({convoUuid: convo1.uuid, authorUuid: demoUsers[0].uuid, body: 'Hi there!'})
+      await context.app.service('messages').create({convoUuid: convo1.uuid, authorUuid: demoUsers[1].uuid, body: 'Got some fresh meat over here...'})
+      await context.app.service('messages').create({convoUuid: convo1.uuid, authorUuid: demoUsers[2].uuid, body: 'Welcome :)'})
 
-    const convo1 = await context.app.service('convos').create({users: [ownerUuid, ...demoUsers.map(({uuid}) => uuid)]})
-    await context.app.service('messages').create({convoUuid: convo1.uuid, authorUuid: demoUsers[0].uuid, body: 'Hi there!'})
-    await context.app.service('messages').create({convoUuid: convo1.uuid, authorUuid: demoUsers[1].uuid, body: 'Got some fresh meat over here...'})
-    await context.app.service('messages').create({convoUuid: convo1.uuid, authorUuid: demoUsers[2].uuid, body: 'Welcome :)'})
-
-    const convo2 = await context.app.service('convos').create({users: [ownerUuid, demoUsers[1].uuid]})
-    await context.app.service('messages').create({convoUuid: convo2.uuid, authorUuid: demoUsers[1].uuid, body: 'Hey pal!'})
+      const convo2 = await context.app.service('convos').create({users: [ownerUuid, demoUsers[1].uuid]})
+      await context.app.service('messages').create({convoUuid: convo2.uuid, authorUuid: demoUsers[1].uuid, body: 'Hey pal!'})
+    }
 
     replaceItems(context, record)
 
