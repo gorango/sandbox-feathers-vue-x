@@ -1,0 +1,168 @@
+{
+  "options": {
+    "ver": "1.0.0",
+    "inspectConflicts": false,
+    "semicolons": false,
+    "freeze": [
+      "config/default.json",
+      "config/development.json",
+      "config/production.json",
+      "config/test.json",
+      "public/favicon.ico",
+      "public/index.html",
+      "src/app.js",
+      "src/channels.js",
+      "src/hooks/log.js",
+      "src/index.js",
+      "src/seed-data.js",
+      "src/sequelize.js",
+      "src/middleware/index.js",
+      "src/services/users/users.service.js",
+      "src/services/users/users.hooks.js",
+      "src/services/users/users.validate.js",
+      "src/services/users/users.mongo.js",
+      "src/services/users/users.mongoose.js",
+      "src/services/users/users.sequelize.js",
+      "src/services/convos/convos.service.js",
+      "src/services/convos/convos.validate.js",
+      "src/services/convos/convos.mongo.js",
+      "src/services/convos/convos.mongoose.js",
+      "src/services/convo-groups/convo-groups.service.js",
+      "src/services/convo-groups/convo-groups.validate.js",
+      "src/services/convo-groups/convo-groups.mongo.js",
+      "src/services/convo-groups/convo-groups.mongoose.js",
+      "src/services/graphql/sql.execute.custom.js",
+      "src/services/graphql/sql.execute.knex.js",
+      "src/services/graphql/sql.metadata.js",
+      "src/services/graphql/sql.resolvers.js",
+      "src/services/messages/messages.service.js",
+      "src/services/messages/messages.validate.js",
+      "src/services/messages/messages.mongo.js",
+      "src/services/messages/messages.mongoose.js",
+      "src/services/message-receipts/message-receipts.service.js",
+      "src/services/message-receipts/message-receipts.validate.js",
+      "src/services/message-receipts/message-receipts.mongo.js",
+      "src/services/message-receipts/message-receipts.mongoose.js",
+      "src/services/relationships/relationships.service.js",
+      "src/services/relationships/relationships.validate.js",
+      "src/services/relationships/relationships.mongo.js",
+      "src/services/relationships/relationships.mongoose.js",
+      "src/refs/common.json"
+    ],
+    "ts": false
+  },
+  "app": {
+    "environmentsAllowingSeedData": "development,test",
+    "seedData": true,
+    "name": "sandbox",
+    "description": "Feathers sandbox",
+    "src": "src",
+    "packager": "yarn@>= 0.18.0",
+    "providers": [
+      "rest",
+      "socketio"
+    ]
+  },
+  "services": {
+    "users": {
+      "name": "users",
+      "nameSingular": "user",
+      "subFolder": "",
+      "fileName": "users",
+      "adapter": "sequelize",
+      "path": "/users",
+      "isAuthEntity": true,
+      "requiresAuth": true,
+      "graphql": true
+    },
+    "relationships": {
+      "name": "relationships",
+      "nameSingular": "relationship",
+      "subFolder": "",
+      "fileName": "relationships",
+      "adapter": "sequelize",
+      "path": "/relationships",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "convos": {
+      "name": "convos",
+      "nameSingular": "convo",
+      "subFolder": "",
+      "fileName": "convos",
+      "adapter": "sequelize",
+      "path": "/convos",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "convoGroups": {
+      "name": "convoGroups",
+      "nameSingular": "convoGroup",
+      "subFolder": "",
+      "fileName": "convo-groups",
+      "adapter": "sequelize",
+      "path": "/convo-groups",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "messages": {
+      "name": "messages",
+      "nameSingular": "message",
+      "subFolder": "",
+      "fileName": "messages",
+      "adapter": "sequelize",
+      "path": "/messages",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    },
+    "messageReceipts": {
+      "name": "messageReceipts",
+      "nameSingular": "messageReceipt",
+      "subFolder": "",
+      "fileName": "message-receipts",
+      "adapter": "sequelize",
+      "path": "/message-receipts",
+      "isAuthEntity": false,
+      "requiresAuth": false,
+      "graphql": true
+    }
+  },
+  "hooks": {
+    "auth": {
+      "fileName": "auth",
+      "camelName": "auth",
+      "ifMulti": "y",
+      "multiServices": [
+        "*app"
+      ],
+      "singleService": ""
+    }
+  },
+  "authentication": {
+    "strategies": [
+      "local",
+      "google",
+      "facebook"
+    ],
+    "entity": "users"
+  },
+  "connections": {
+    "sequelize": {
+      "database": "postgres",
+      "adapter": "sequelize",
+      "connectionString": "postgres://postgres:postgres@localhost:5432/sandbox"
+    }
+  },
+  "graphql": {
+    "path": "/graphql",
+    "strategy": "batchloaders",
+    "sqlInterface": null,
+    "requiresAuth": false,
+    "doNotConfigure": true,
+    "name": "graphql"
+  }
+}

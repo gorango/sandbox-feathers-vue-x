@@ -1,0 +1,17 @@
+doctype html
+html
+  body
+    header
+    div
+      h1 Hi, #{name}
+      p Thank you for signing up! Please #[a(href=hashLink) verify your email].
+      p If the link above doesn't work, you can follow or copy the following link: #[br]
+        a(href=hashLink) #{hashLink}
+      p You may still use the site if your email is unverified but we can't send you emails.
+      p
+        | If you didn't sign up for a Sandbox account please
+        |
+        a(
+          href='mailto:' + returnEmail + '?subject=I did not sign up at this site&body=Someone unauthorized signed up with my email.'
+        ) let us know
+        | .

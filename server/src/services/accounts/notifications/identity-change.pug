@@ -1,0 +1,18 @@
+doctype html
+html
+  body
+    header
+    div
+      h1 Hi, #{name}
+      p Your user information was just changed. Please verify that you made these changes.
+      ul
+        each change, key in changes
+          li #{key}: #{change}
+      p
+        a.reset-btn(href=hashLink) I accept the changes
+      p If you didn't request this change please
+        |
+        a(
+          href='mailto:' + returnEmail + '?subject=I did not change my email&body=Someone unauthorized changed my email. Can you help me change it back?'
+        ) let us know
+        | .
